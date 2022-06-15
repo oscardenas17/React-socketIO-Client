@@ -13,7 +13,7 @@ function App() {
 //escuchar lo emitido desde el server
   useEffect(() => {    
     socket.on('dato-turno', (turno) =>{
-      console.log(`                                                                     datos `+ turno.nombre);
+      console.log(`  datos `+ turno.nombre);
       setTurnos( [turno] )
     })
   }, [socket]);
