@@ -1,50 +1,19 @@
 import { useEffect, useState } from "react";
-import io from 'socket.io-client'
 
 import Tablero from "./components/Tablero";
 import Turnos from "./components/Turnos";
-
-//COnexión con el server socket
-const connectSocketServer = () =>{
-  const socket = io.connect('http://localhost:4000', {
-    //SOCKETIO 3 > PIDE TRANSPORT
-    transports: ['websocket']
-  })
-  return socket;
-}
-
+import {useSocket} from "./hooks/useSocket";
 
 function App() {
 
-  const [socket] = useState(connectSocketServer);
-  const [online, setOnline] = useState(false);
   const [turnos, setTurnos] = useState( [] );//pasar info de turno
+  const {socket, online} = useSocket('http://localhost:4000');
 
-  //console.log(socket);
-
-  //socket conectado
-  useEffect(() => {
-    setOnline( socket.connected )
-  }, [socket]);
-
-  useEffect(() => {
-    
-    socket.on('connect', () =>{
-      setOnline(true)
-    })
-  }, [socket]);
-
-  useEffect(() => {
-    
-    socket.on('disconnect', () =>{
-      setOnline(false)
-    })
-  }, [socket]);
 
 //escuchar lo emitido desde el server
   useEffect(() => {    
     socket.on('dato-turno', (turno) =>{
-      console.log(`aca llegan los datos `+ turno.nombre);
+      console.log(`                                                                     datos `+ turno.nombre);
       setTurnos( [turno] )
     })
   }, [socket]);
