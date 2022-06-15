@@ -1,11 +1,12 @@
 import React from 'react'
-import App from './App'
+
 import { SocketProvider } from './context/SocketContext'
+import HomePage from './HomePage'
 
 export const TurnoApp = () => {
   return (
     <SocketProvider>
-        <App />
+        <HomePage />
     </SocketProvider>
   )
 }
