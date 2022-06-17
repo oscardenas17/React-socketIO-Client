@@ -6,7 +6,7 @@ import { TurnoApp } from "./TurnoApp";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
+  //  <React.StrictMode>
     <TurnoApp />
-  // {/* </React.StrictMode> */}
+  //</React.StrictMode> 
 );

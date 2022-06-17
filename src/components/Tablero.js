@@ -1,6 +1,6 @@
 import React from "react";
 
-const Tablero = ({ turno }) => {
+const Tablero = () => {
   return (
     <div className="container">
      
