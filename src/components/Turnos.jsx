@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useId, useState } from "react";
 import { SocketContext } from "../context/SocketContext";
 
+import { useParams } from "react-router-dom";
 
 const Turnos = () => {
 
+  const params = useParams();
+  const ciudad = params.ciudad
+  console.log(params)
 
   const [turnos, setTurnos] = useState( [] );
   const { socket } = useContext(SocketContext);
@@ -14,30 +18,29 @@ const Turnos = () => {
   // }
 
 
-  const turnoOut = (id) =>{
-    console.log(id);
-  // setTurnos( turnoPrevio => turnoPrevio.find( turno => turno.id !== id))
-  }
+  // const turnoOut = (id) =>{
+  //   console.log(id);
+  // // setTurnos( turnoPrevio => turnoPrevio.find( turno => turno.id !== id))
+  // }
+
 
   //escuchar lo emitido desde el server
+  //1. enviar el room
   useEffect(() => {
-    socket.on("dato-turno-server", (data) => {        
-        //const newTurno = Object.values(data)
-        // let añadirTurnos=[];
-        //  añadirTurnos = [...almacena, almacena]
-        //console.log(`  datos ` + almacena); 
-        //console.log( data); 
-      // setTurnos( turnoPrevio=>  turnoPrevio.concat( {...data, id: turnoPrevio.length }) );
-      setTurnos (turnoPrevio=> [data, ...turnoPrevio]  )
-      console.log( turnos); 
-     
-      //setTurnos(turnoPrevio= () =>  [...turnoPrevio, newTurno]); 
-      
-      //console.log( turnoPrevio=>  [...turnoPrevio, data]);
-     
-    });
-    //return () => socket.off("dato-turno");
+    socket.emit('room', ciudad)
+    console.log('desde front',ciudad)
   }, []);
+
+
+
+
+   useEffect(() => {
+     socket.on('respuesta', (data)=>{
+       console.log(data)
+       setTurnos (turnoPrevio=> [data, ...turnoPrevio]  )  
+    })
+   }, [socket]);
+
 
  
 const id = useId();  
@@ -51,10 +54,10 @@ const id = useId();
         // onClick={turnoOut.bind(null, turno.id) }
         key={ ` ${id}${index}`}>
         <td>
-          <h3>{ turno.nombre}</h3>
+          <h3>{ turno.txtNombre}</h3>
         </td>
         <td>
-          <h3>{turno.consultorio} </h3>
+          <h3>{turno.txtConsultorio} </h3>
         </td>
       </tr>
     ));

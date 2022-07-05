@@ -3,7 +3,7 @@ import Tablero from "./components/Tablero";
 import Turnos from "./components/Turnos";
 import { SocketContext } from "./context/SocketContext";
 
-function HomePage() {
+function ListaTurno() {
   // const [turnos, setTurnos] = useState( [] );//pasar info de turno
   const { online } = useContext(SocketContext);
 
@@ -11,11 +11,11 @@ function HomePage() {
     <div className="App">
       <div className="alert m-0 p-0">
         <p>
-          Service Status:
+          Servicio: 
           {online ? (
-            <span className="text-success"> Online</span>
+            <span className="text-success"> En linea</span>
           ) : (
-            <span className="text-danger"> Offline</span>
+            <span className="text-danger"> Desconectado</span>
           )}
         </p>
       </div>
@@ -26,4 +26,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default ListaTurno;

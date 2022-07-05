@@ -6,7 +6,7 @@ import { useSocket } from "../hooks/useSocket";
 export const SocketContext = createContext(); 
 
 
-//high order component mas facíl de utilizar
+//high order component 
 export const SocketProvider = ( {children}) => {
 
     const {socket, online} = useSocket('http://localhost:4000');
