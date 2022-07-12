@@ -11,7 +11,7 @@ function ListaTurno() {
     <div className="App">
       <div className="alert m-0 p-0">
         <p>
-          Servicio: 
+          Servicio:
           {online ? (
             <span className="text-success"> En linea</span>
           ) : (
@@ -20,8 +20,16 @@ function ListaTurno() {
         </p>
       </div>
 
-      <Tablero />
-      <Turnos />
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <Tablero />
+          </div>
+          <div class="col">
+            <Turnos />{" "}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

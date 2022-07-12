@@ -2,11 +2,7 @@ import React from "react";
 
 const Tablero = () => {
   return (
-    <div className="container">
-     
-
-      <div className="row">
-        <div className="col-12 h-100">
+    <div > 
           <div
             id="carouselExampleFade"
             className="carousel slide carousel-fade"
@@ -20,13 +16,13 @@ const Tablero = () => {
                   alt="..."
                 />
               </div>
-              <div className="carousel-item">
+              {/* <div className="carousel-item">
                 <img
                   src="https://blog.desafiolatam.com/wp-content/uploads/2019/04/react-galaxia.png"
                   className=" d-block w-100 figure-img  rounded"
                   alt="..."
                 />
-              </div>
+              </div> */}
               
             </div>
             <button
@@ -56,11 +52,8 @@ const Tablero = () => {
           </div>
         </div>
 
-        <h1 className="my-4">Atendiendo</h1>
-        <hr />
        
-      </div>
-    </div>
+     
   );
 };
 
